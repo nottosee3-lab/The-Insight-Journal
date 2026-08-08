@@ -40,7 +40,8 @@ async function sendMessage() {
         const data = await response.json();
         
         // Extract out the response text cleanly from Gemini JSON formatting
-        const rawAiText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response received.";
+        const rawAiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response received.";
+
         
         // Format markdown to HTML string
         const formattedAiText = parseMarkdown(rawAiText);
